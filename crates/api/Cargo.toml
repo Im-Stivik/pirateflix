@@ -1,0 +1,25 @@
+[package]
+name = "api"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+name = "api"
+path = "src/lib.rs"
+
+[[bin]]
+name = "api-server"
+path = "src/main.rs"
+
+[dependencies]
+domain.workspace = true
+my_app_core = { workspace = true }
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+anyhow.workspace = true
+
+axum = "0.8"
+tower-http = { version = "0.6", features = ["trace", "cors"] }
