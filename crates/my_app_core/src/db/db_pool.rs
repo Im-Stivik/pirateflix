@@ -1,4 +1,4 @@
-use sqlx::{sqlite, Executor, prelude::FromRow, SqlitePool, Sqlite, Pool};
+use sqlx::{sqlite, SqlitePool, Sqlite, Pool};
 use sqlx::sqlite::SqliteConnectOptions;
 
 pub async fn create_pool() -> Result<Pool<Sqlite>, sqlx::Error> {

@@ -1,17 +1,15 @@
-mod db;
-
-use db::db_pool;
+use my_app_core::{App, Config, media};
 
 #[tokio::main]
 async fn main() {
+    let app = App::new(Config::from_env()).await.unwrap();
+
     println!("Hello, world!");
 
-    let pool = db_pool::create_pool().await.unwrap();
+    let media_items: Vec<media::model::MediaItem> = app.media.list_all().await.unwrap();
 
-    let test_query: Vec<TestStruct>= sqlx::query_as("SELECT * from test").fetch_all(&pool).await.unwrap();
-
-    for row in test_query {
-        println!("{:?}", row);
+    for item in media_items {
+        println!("{:#?}", item);
     }
 }
 
