@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls
 
-// Start screen: a single centered "Play" button.
 Item {
     id: root
 

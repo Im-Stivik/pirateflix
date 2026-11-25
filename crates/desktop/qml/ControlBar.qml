@@ -2,8 +2,6 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-// Progress bar + transport buttons. Purely presentational: it receives
-// state through properties and reports user actions through signals.
 Rectangle {
     id: root
 

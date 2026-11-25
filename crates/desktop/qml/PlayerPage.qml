@@ -2,14 +2,11 @@ import QtQuick
 import QtQuick.Layouts
 import QtMultimedia
 
-// Video playback screen: owns the media player, the video surface,
-// the control bar and the keyboard shortcuts.
 Item {
     id: root
 
     readonly property int seekStepMs: 5000
 
-    // Emitted after playback has been stopped and cleaned up.
     signal stopped()
 
     function open(url) {
@@ -34,14 +31,12 @@ Item {
         root.stopped()
     }
 
-    // Media backend (FFmpeg in Qt >= 6.5)
     MediaPlayer {
         id: player
         videoOutput: video
         audioOutput: AudioOutput {}
     }
 
-    // Keyboard: arrow keys seek (active only while this page is shown)
     Shortcut {
         sequence: "Left"
         enabled: root.visible
