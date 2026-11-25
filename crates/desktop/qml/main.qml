@@ -1,25 +1,43 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import com.myapp
+import QtQuick.Dialogs
 
 ApplicationWindow {
+    id: win
     visible: true
-    width: 400
-    height: 300
-    title: "My App"
+    width: 960
+    height: 600
+    minimumWidth: 480
+    minimumHeight: 320
+    title: "Video Player"
+    color: "#15171c"
 
-    UserModel { id: userModel }
-
-    ColumnLayout {
-        anchors.centerIn: parent
-        spacing: 12
-
-        Button {
-            text: "Load user 1"
-            onClicked: userModel.loadUser(1)
+    // File picker: video files only
+    FileDialog {
+        id: fileDialog
+        title: "Select a video"
+        nameFilters: [
+            "Video files (*.mp4 *.m4v *.mkv *.avi *.mov *.webm *.wmv *.flv *.mpg *.mpeg *.ts *.3gp *.ogv)"
+        ]
+        onAccepted: {
+            pages.currentIndex = 1
+            playerPage.open(selectedFile)
         }
-        Label { text: "Name: " + userModel.name }
-        Label { text: "Status: " + userModel.status }
+    }
+
+    StackLayout {
+        id: pages
+        anchors.fill: parent
+        currentIndex: 0
+
+        StartPage {
+            onPlayClicked: fileDialog.open()
+        }
+
+        PlayerPage {
+            id: playerPage
+            onStopped: pages.currentIndex = 0
+        }
     }
 }
