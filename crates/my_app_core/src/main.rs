@@ -12,10 +12,3 @@ async fn main() {
         println!("{:#?}", item);
     }
 }
-
-#[derive(sqlx::prelude::FromRow, Debug)]
-struct TestStruct {
-    id: i32,
-    test: String,
-    test2: String,
-}
