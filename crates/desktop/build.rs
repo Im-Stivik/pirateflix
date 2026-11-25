@@ -7,8 +7,14 @@ fn main() {
         .qml_module(QmlModule::<&str, &str> {
             uri: "com.myapp",
             rust_files: &["src/bridge/user_model.rs"],
-            qml_files: &["qml/main.qml"],
+            qml_files: &[
+                "qml/main.qml",
+                "qml/StartPage.qml",
+                "qml/PlayerPage.qml",
+                "qml/ControlBar.qml",
+            ],
             ..Default::default()
+
         })
         .build();
 }
