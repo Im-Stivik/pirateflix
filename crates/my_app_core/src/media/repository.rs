@@ -1,5 +1,4 @@
 use sqlx::{Error, SqlitePool};
-use domain::error::AppError;
 use crate::media::model::MediaItem;
 
 #[derive(Clone)]

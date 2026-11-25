@@ -1,7 +1,6 @@
-use axum::{extract::{Path, State}, routing::get, Json, Router};
+use axum::{extract::{State}, routing::get, Json, Router};
 use my_app_core::App;
 use std::sync::Arc;
-use domain::error::AppError;
 use my_app_core::media::model::MediaItem;
 
 pub fn build_router(app: Arc<App>) -> Router {
