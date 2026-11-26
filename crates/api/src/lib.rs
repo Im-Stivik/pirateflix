@@ -1,12 +1,13 @@
-use axum::{extract::{Path, State}, routing::get, Json, Router};
+use axum::{extract::{State}, routing::get, Json, Router};
 use my_app_core::App;
 use std::sync::Arc;
+use my_app_core::media::model::MediaItem;
 
 pub fn build_router(app: Arc<App>) -> Router {
-    Router::new().route("/users/{id}", get(get_user)).with_state(app)
+    Router::new().route("/media", get(list_media)).with_state(app)
 }
 
-async fn get_user(State(app): State<Arc<App>>, Path(id): Path<u32>) -> Json<String> {
-    let user = app.users.get_user(id).await.unwrap();
-    Json(user.name)
+async fn list_media(State(app): State<Arc<App>>) -> Json<Vec<MediaItem>> {
+    let media = app.media.list_all().await.unwrap();
+    Json(media)
 }

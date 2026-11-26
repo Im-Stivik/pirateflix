@@ -6,7 +6,7 @@ fn main() {
         .qt_module("QuickControls2")
         .qml_module(QmlModule::<&str, &str> {
             uri: "com.myapp",
-            rust_files: &["src/bridge/user_model.rs"],
+            rust_files: &["src/bridge/media_model.rs"],
             qml_files: &[
                 "qml/main.qml",
                 "qml/StartPage.qml",

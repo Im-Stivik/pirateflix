@@ -13,6 +13,7 @@ ApplicationWindow {
     title: "Video Player"
     color: "#15171c"
 
+
     // File picker: video files only
     FileDialog {
         id: fileDialog
